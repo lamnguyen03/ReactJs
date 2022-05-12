@@ -1,0 +1,16 @@
+*{
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 25px;
+}
+.nav_link{
+    height: 50px;
+    top:20px;
+    background-color: rgb(235, 60, 60);
+    display: flex;
+    justify-content: center;
+    
+}
+.nav_link li{
+    padding: 0 20px;
+}
