@@ -8,8 +8,10 @@ function Card(props){
              <h3>{props.namepro} </h3>
              <p>{props.price} </p>
            </div>
+           <button >Add to cart </button>
          </div>
        </>
      );
 }
+
 export default Card;
