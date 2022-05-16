@@ -5,13 +5,13 @@ import App from './components/Main/App';
 import Header from './components/Header/Header';
 import reportWebVitals from './reportWebVitals';
 import Form from './Form/Form';
-import Form2 from './Form/Form2';
+import Xeploai from './Form/Xeploai';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <Form2/>
+  <Xeploai/>
   </React.StrictMode>
 );
 
