@@ -1,0 +1,22 @@
+.tbl{
+    text-align: center;
+    padding: 40px 30px 20px 10px;
+  
+  }
+  .form1{
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    background-color: rgb(207, 226, 221);
+  }
+  #td{
+    color: rgb(236, 153, 29);
+  }
+  #vl{
+    color: rgb(250, 242, 242);
+    background-color: chocolate;
+  }
+  tr{
+    font-size: 20px;
+    color: rgb(50, 165, 204);
+  }

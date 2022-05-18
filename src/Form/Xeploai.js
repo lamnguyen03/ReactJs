@@ -67,7 +67,6 @@ export default class  extends Component {
                         <label htmlFor="hk2">Kết quả: </label>
                         <input type="text" className="form-control" defaultValue={0} readOnly value={this.state.result}>
                         </input>
-
                     </div>
                     <div className="form-group">
                         <label htmlFor="hk2">Xếp loại: </label>

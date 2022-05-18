@@ -6,12 +6,13 @@ import Header from './components/Header/Header';
 import reportWebVitals from './reportWebVitals';
 import Form from './Form/Form';
 import Xeploai from './Form/Xeploai';
+import Menu from './Form/Menu';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <Xeploai/>
+  <Menu/>
   </React.StrictMode>
 );
 
