@@ -28,7 +28,6 @@ class Menu extends Component {
           this.setState({price: 2000})
         }
       }
-      
       this.setState({[key]:val});
   }
   HandlerSubmit = (event) =>{
