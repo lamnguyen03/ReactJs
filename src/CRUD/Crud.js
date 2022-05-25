@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import axios from 'axios';
 class Crud extends React.Component{
     constructor(props){
       super(props);
@@ -8,24 +8,19 @@ class Crud extends React.Component{
           name:"",
           price:0,
           action:"ADD ITEM",//default ADD ITEM
-          items:[
-            {
-              name:"Iphone 7 Plus",price:500.0
-            },
-            {
-              name:"Iphone 8 Plus",price:1400.0
-            },
-            {
-              name:"Iphone 10",price:1600.0
-            },
-            {
-              name:"Iphone 10 Pro",price:1700.0
-            }
-          ]
-      }
+          items:[]
+          
+      };
       this.changeName = this.changeName.bind(this);
       this.changePrice = this.changePrice.bind(this);
      
+    }
+    componentDidMount() {  
+      axios.get(`https://61bc10c1d8542f0017824535.mockapi.io/CRUD`)
+      .then(res => {
+        const items = res.data;
+        this.setState({ items });
+      })
     }
     changeName = (e)=>{
         this.setState({
@@ -47,9 +42,11 @@ class Crud extends React.Component{
             ],
             name:"",
             price:""
-          })
+          }
+          )
         }
     }
+    
     Edit = (item,index)=>{
       this.setState({
         action:'UPDATE ITEM',
@@ -106,7 +103,7 @@ class Crud extends React.Component{
                              <th>STT</th>
                              <th>Name</th>
                              <th>Price</th>
-                             <th>Modify</th>
+                             <th>Edit</th>
                              <th>Remove</th>
                         </tr>
                      </thead>
@@ -114,9 +111,9 @@ class Crud extends React.Component{
                         {
                           this.state.items.map((item,index)=>(
                             <tr key={index}>
-                                <td>{index}</td>
+                                <td>{index +1 }</td>
                                 <td>{item.name}</td>
-                                <td>{item.price} $</td>
+                                <td>{item.price} VND</td>
                                 <td><label className="badge badge-warning" onClick={()=>this.Edit(item,index)}>Edit</label></td>
                                 <td><label className="badge badge-danger" onClick={()=>this.deleteItem(item.name)}>Remove</label></td>
                             </tr>

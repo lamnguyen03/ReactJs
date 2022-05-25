@@ -9,12 +9,13 @@ import Xeploai from './Form/Xeploai';
 import Menu from './Form/Menu';
 import Demo from './Lifecycle_react/Demo';
 import Crud from './CRUD/Crud';
+import Father from './Router/Father';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <Crud/>
+  <Father/>
   </React.StrictMode>
 );
 
