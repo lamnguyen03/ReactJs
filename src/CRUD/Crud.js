@@ -6,13 +6,14 @@ class Crud extends React.Component{
       this.state = {
           index:0,
           name:"",
-          price:0,
+          price:"",
           action:"ADD ITEM",//default ADD ITEM
           items:[]
           
       };
       this.changeName = this.changeName.bind(this);
       this.changePrice = this.changePrice.bind(this);
+      this.componentDidMount = this.componentDidMount.bind(this);
      
     }
     componentDidMount() {  
@@ -34,16 +35,24 @@ class Crud extends React.Component{
     }
    
     addItem =()=>{
-        if(!this.state.items.find(item=>item.name===this.state.name)){
-          this.setState({
-            items:[
-              ...this.state.items,
-              { name:this.state.name,price:this.state.price}
-            ],
-            name:"",
-            price:""
-          }
-          )
+        if(this.state.name !== '' && this.state.price!==''){
+          console.log(this.state.name);
+          console.log(this.state.price);
+          axios({
+            method:'POST',
+            url :`https://61bc10c1d8542f0017824535.mockapi.io/CRUD`,
+            items: {
+              name: this.state.name,
+              price: this.state.price,
+            }
+    
+          }).then(res => {
+            this.componentDidMount();
+            this.setState ({
+              name:"",
+              price:""
+            })
+          })
         }
     }
     
