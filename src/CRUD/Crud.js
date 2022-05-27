@@ -4,7 +4,7 @@ class Crud extends React.Component{
     constructor(props){
       super(props);
       this.state = {
-          index:0,
+          id:'',
           name:"",
           price:"",
           action:"ADD ITEM",//default ADD ITEM
@@ -36,12 +36,10 @@ class Crud extends React.Component{
    
     addItem =()=>{
         if(this.state.name !== '' && this.state.price!==''){
-          console.log(this.state.name);
-          console.log(this.state.price);
           axios({
             method:'POST',
             url :`https://61bc10c1d8542f0017824535.mockapi.io/CRUD`,
-            items: {
+            data: {
               name: this.state.name,
               price: this.state.price,
             }
@@ -61,30 +59,41 @@ class Crud extends React.Component{
         action:'UPDATE ITEM',
         name:item.name,
         price:item.price,
-        index:index
+        index:index,
+        id: item.id
       });
     }
     updateItem = ()=>{
-      let data = this.state.items;
-      data.map((item,index)=>{
-                if(this.state.index===index){
-                  item.name = this.state.name;
-                  item.price = parseInt(this.state.price);
-                }
+        axios({
+        method:'PUT',
+        url :`https://61bc10c1d8542f0017824535.mockapi.io/CRUD/${this.state.id}`,
+        data: {
+          name: this.state.name,
+          price: this.state.price
+          
+        }
+
+      }).then(res => {
+        this.componentDidMount();
       })
-      //set update items
       this.setState({
-         items:data,
          name:"",
          price:"",
          action:'ADD_ITEM'
       })
-       
+      
     }
    
-    deleteItem=(name)=>this.setState({
-      items:this.state.items.filter(item=>item.name!=name)
-    })
+    deleteItem=(item)=>{
+      axios
+      .delete(`https://61bc10c1d8542f0017824535.mockapi.io/CRUD/${item}`)
+      .then((res) => {
+        this.componentDidMount();
+       
+      });
+
+     
+    }
     render(){
       return (
         <div className="container">
@@ -124,7 +133,7 @@ class Crud extends React.Component{
                                 <td>{item.name}</td>
                                 <td>{item.price} VND</td>
                                 <td><label className="badge badge-warning" onClick={()=>this.Edit(item,index)}>Edit</label></td>
-                                <td><label className="badge badge-danger" onClick={()=>this.deleteItem(item.name)}>Remove</label></td>
+                                <td><label className="badge badge-danger" onClick={()=>this.deleteItem(item.id)}>Remove</label></td>
                             </tr>
                           ))
                         }
