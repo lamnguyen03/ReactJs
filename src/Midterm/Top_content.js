@@ -47,7 +47,7 @@ export default class Top_content extends Component {
               }
             </div>
             <div className="col-md-6">
-            {this.state.news.map((news)=>(
+            {this.state.news .filter((news) => news.type === "TG").map((news)=>(
               <div className='row'>
                 <div className='col-md-4'>
                 <img src={news.img} alt="Lamp" ></img>
