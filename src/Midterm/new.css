@@ -1,9 +1,11 @@
-#newleft{
-    padding: 3px 0px;
+#newleft {
+  padding: 3px 0px;
 }
 img {
-    max-width: 100%;
+  max-width: 100%;
+  object-fit: cover;
 }
-.left img{
-    width: 100%;
+.left img {
+  width: 100%;
+  object-fit: cover;
 }

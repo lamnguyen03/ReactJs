@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import "./new.css";
 
-export default class Top_content extends Component {
+ class Top_content extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -36,34 +36,47 @@ export default class Top_content extends Component {
         <h2>THẾ GIỚI</h2>
         <br></br>
         <div className="row">
-          <div className="col-md-6">
-            {this.state.news[this.state.news.length - 1] !== undefined ? (
-              <div className="left">
-                <img
-                  src={this.state.news[this.state.news.length - 1].img}
-                  alt="Lamp"
-                ></img>
-                <br></br>
-                {this.state.news[this.state.news.length - 1].title}
-              </div>
-            ) : (
-              console.log(2222)
-            )}
-          </div>
-          <div className="col-md-6">
-            {this.state.news
-              .filter((news) => news.type === "TG")
-              .map((news) => (
-                <div className="row" id="newleft">
-                  <div className="col-md-4">
-                    <img src={news.img} alt="Lamp"></img>
-                  </div>
-                  <div className="col-md-8">{news.title}</div>
-                </div>
-              ))}
-          </div>
+          <div className="col-md-6">{render(this.state.news, 0,"TG")}</div>
+          <div className="col-md-6">{render(this.state.news, 2,"TG")}</div>
         </div>
       </div>
     );
   }
 }
+const render = (arr,status,type)=>{
+  let main,list=[];
+    arr
+    .filter((news) => news.type === type)
+    .map((news,index,array) => 
+      {
+        if (array.length - 1 === index) {
+        main = (
+          <div className="left">
+            <img src={news.img} alt="Lamp"></img>
+            <br></br>
+            {news.title}
+          </div>
+        );
+        } else {
+           list[index]= (
+             <div className="row" id="newleft">
+               <div className="col-md-4">
+                 <img style={{width:"100%"}} src={news.img} alt="Lamp"></img>
+               </div>
+               <div className="col-md-8">{news.title}</div>
+             </div>
+           );
+        }
+      }
+
+      
+      
+    );
+    if(status === 0){
+      return main
+    }
+    else {
+      return list
+    }
+}
+export {Top_content,render}

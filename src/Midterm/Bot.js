@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import './new.css'
+import { render } from "./Top_content";
 export default class Bot extends Component {
   constructor(props) {
     super(props);
@@ -34,33 +35,8 @@ export default class Bot extends Component {
         <h2>TÀI CHÍNH - KINH DOANH</h2>
         <br></br>
         <div className="row">
-          <div className="col-md-6">
-            {this.state.news[this.state.news.length - 1] !== undefined ? (
-              <div className="left">
-                <img
-                  src={this.state.news[this.state.news.length - 1].img}
-                  alt="Lamp"
-                ></img>
-                <br></br>
-                {this.state.news[this.state.news.length - 1].title}
-              </div>
-            ) : (
-              console.log(2222)
-            )}
-          </div>
-          <div className="col-md-6">
-            {this.state.news
-              .filter((news) => news.type === "TCKD")
-              .map((news) => (
-                <div className="row" id="newleft">
-                  <div className="col-md-4">
-                    <img src={news.img} alt="Lamp"></img>
-                  </div>
-                  <div className="col-md-8">{news.title}
-                  </div> 
-                </div>
-              ))}
-          </div>
+          <div className="col-md-6">{render(this.state.news, 0, "TCKD")}</div>
+          <div className="col-md-6">{render(this.state.news, 1, "TCKD")}</div>
         </div>
       </div>
     );
