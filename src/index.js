@@ -14,7 +14,7 @@ root.render(
     <Header_Mid></Header_Mid>
     <Top_content/>
     <Bot></Bot> 
-    <Admin></Admin>
+    {/* <Admin></Admin> */}
     
   </React.StrictMode>
 );

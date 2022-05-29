@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import "./new.css";
 
 export default class Top_content extends Component {
   constructor(props){
@@ -32,39 +33,37 @@ export default class Top_content extends Component {
   render() {
     return (
       <div className="container">
-         <h2>THẾ GIỚI</h2>
-         <br></br>
-         <div className="row">
-            <div className="col-md-6">
-              {
-              this.state.news[this.state.news.length-1] !== undefined?
-              <div className='left'>
-                <img src={this.state.news[this.state.news.length-1].img} alt="Lamp" ></img> <br></br>
-                {this.state.news[this.state.news.length-1].title}
-              </div> 
-              :
-              console.log(2222)
-              }
-            </div>
-            <div className="col-md-6">
-            {this.state.news
-            .filter((news) => news.type === "TG")
-            .map((news)=>(
-              <div className='row'>
-                <div className='col-md-4'>
-                <img src={news.img} alt="Lamp" ></img>
-                </div>
-                <div className='col-md-8'>
-                  {news.title}
-                </div>
+        <h2>THẾ GIỚI</h2>
+        <br></br>
+        <div className="row">
+          <div className="col-md-6">
+            {this.state.news[this.state.news.length - 1] !== undefined ? (
+              <div className="left">
+                <img
+                  src={this.state.news[this.state.news.length - 1].img}
+                  alt="Lamp"
+                ></img>
+                <br></br>
+                {this.state.news[this.state.news.length - 1].title}
               </div>
-          ))}
-          
-            </div>
-             
-          
-         </div>
+            ) : (
+              console.log(2222)
+            )}
+          </div>
+          <div className="col-md-6">
+            {this.state.news
+              .filter((news) => news.type === "TG")
+              .map((news) => (
+                <div className="row" id="newleft">
+                  <div className="col-md-4">
+                    <img src={news.img} alt="Lamp"></img>
+                  </div>
+                  <div className="col-md-8">{news.title}</div>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
-    )
+    );
   }
 }

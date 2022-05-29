@@ -154,7 +154,7 @@ class Crud extends React.Component {
           </div>
 
           <div className="show">
-            <h1>List Products</h1>
+            <h1>NEWS</h1>
             <table className="table">
               <thead>
                 <tr>

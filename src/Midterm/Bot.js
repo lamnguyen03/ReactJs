@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import './new.css'
 export default class Bot extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ export default class Bot extends Component {
                 <img
                   src={this.state.news[this.state.news.length - 1].img}
                   alt="Lamp"
-                ></img>{" "}
+                ></img>
                 <br></br>
                 {this.state.news[this.state.news.length - 1].title}
               </div>
@@ -52,11 +52,12 @@ export default class Bot extends Component {
             {this.state.news
               .filter((news) => news.type === "TCKD")
               .map((news) => (
-                <div className="row">
+                <div className="row" id="newleft">
                   <div className="col-md-4">
                     <img src={news.img} alt="Lamp"></img>
                   </div>
-                  <div className="col-md-8">{news.title}</div>
+                  <div className="col-md-8">{news.title}
+                  </div> 
                 </div>
               ))}
           </div>
