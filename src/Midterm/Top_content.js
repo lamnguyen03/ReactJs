@@ -6,12 +6,9 @@ import "./new.css";
   constructor(props){
     super(props);
     this.state = {
-       news: []
-        
+       news: [] 
     };
-    
     this.componentDidMount = this.componentDidMount.bind(this);
-   
   }
   componentDidMount() {  
     axios.get(`https://61bc10c1d8542f0017824535.mockapi.io/Midterm`)
@@ -21,29 +18,23 @@ import "./new.css";
     })
     .catch(error => console.log(error));
   }
-/*{listProduct
-.filter((products) => products.status === "outstanding")
-.map((product, index) => (
-  <Outstanding
-    key={index}
-    image={product.image_post}
-    title={product.title_post}
-  />
-))}*/
+
   render() {
     return (
       <div className="container">
         <h2>THẾ GIỚI</h2>
         <br></br>
         <div className="row">
-          <div className="col-md-6">{render(this.state.news, 0,"TG")}</div>
-          <div className="col-md-6">{render(this.state.news, 2,"TG")}</div>
+          <div className="col-md-6">{print(this.state.news, 0,"TG")}</div>
+          <div className="col-md-6">{print(this.state.news, 2,"TG")}</div>
         </div>
       </div>
     );
   }
 }
-const render = (arr,status,type)=>{
+
+
+const print = (arr,status,type)=>{
   let main,list=[];
     arr
     .filter((news) => news.type === type)
@@ -54,7 +45,7 @@ const render = (arr,status,type)=>{
           <div className="left">
             <img src={news.img} alt="Lamp"></img>
             <br></br>
-            {news.title}
+           <h3> {news.title}</h3>
           </div>
         );
         } else {
@@ -63,14 +54,12 @@ const render = (arr,status,type)=>{
                <div className="col-md-4">
                  <img style={{width:"100%"}} src={news.img} alt="Lamp"></img>
                </div>
-               <div className="col-md-8">{news.title}</div>
+               <div className="col-md-8"><h5>{news.title}</h5></div>
              </div>
            );
         }
       }
-
-      
-      
+ 
     );
     if(status === 0){
       return main
@@ -79,4 +68,5 @@ const render = (arr,status,type)=>{
       return list
     }
 }
-export {Top_content,render}
+export {Top_content,print}
+

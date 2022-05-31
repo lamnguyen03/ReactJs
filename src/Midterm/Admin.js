@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import './new.css'
+
 class Crud extends React.Component {
   constructor(props) {
     super(props);
@@ -171,7 +173,7 @@ class Crud extends React.Component {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{news.type}</td>
-                    <td>{news.img}</td>
+                    <td><img src= {news.img}></img></td>
                     <td>{news.title}</td>
                     <td>
                       <label
